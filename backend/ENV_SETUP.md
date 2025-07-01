@@ -37,7 +37,7 @@ FRONTEND_URL=https://your-frontend-url.vercel.app
 Create a `.env` file in your `frontend` directory:
 
 ```env
-VITE_BACKEND_URL=https://your-backend-url.vercel.app
+VITE_BACKEND_URL=https://localhost:4000
 ```
 
 - **VITE_BACKEND_URL**: The base URL of your deployed backend API.
