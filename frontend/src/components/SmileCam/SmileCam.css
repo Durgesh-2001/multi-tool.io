@@ -1,0 +1,520 @@
+.smilecam {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: var(--bg-color);
+  color: var(--text-color);
+}
+
+.smilecam-container {
+  background: var(--card-bg);
+  border-radius: 20px;
+  padding: 2rem;
+  border: 2px solid var(--border-color);
+  box-shadow: 0 8px 32px var(--shadow-color);
+}
+
+.smilecam-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--text-color);
+  text-align: center;
+}
+
+.smilecam-subtitle {
+  font-size: 1.1rem;
+  color: var(--text-color);
+  opacity: 0.8;
+  text-align: center;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.camera-section {
+  margin-bottom: 2rem;
+}
+
+.camera-container {
+  position: relative;
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+  border-radius: 15px;
+  overflow: hidden;
+  background: var(--card-bg);
+  border: 2px solid var(--border-color);
+  box-shadow: 0 8px 32px var(--shadow-color);
+  min-height: 400px;
+}
+
+/* Camera Start Screen */
+.camera-start {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 2rem;
+  text-align: center;
+  min-height: 400px;
+}
+
+.camera-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  opacity: 0.7;
+}
+
+.camera-start h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--text-color);
+}
+
+.camera-start p {
+  color: var(--text-color);
+  opacity: 0.8;
+  margin-bottom: 2rem;
+}
+
+.start-button {
+  padding: 1rem 2rem;
+  background: var(--accent-color);
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1.1rem;
+  box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+}
+
+.start-button:hover {
+  background: #ee5a24;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+}
+
+/* Camera Error Screen */
+.camera-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 2rem;
+  text-align: center;
+  min-height: 400px;
+}
+
+.error-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: #ff6b6b;
+}
+
+.camera-error p {
+  color: var(--text-color);
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+}
+
+.retry-button {
+  padding: 0.75rem 1.5rem;
+  background: var(--accent-color);
+  color: white;
+  border: none;
+  border-radius: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.retry-button:hover {
+  background: #ee5a24;
+  transform: translateY(-1px);
+}
+
+/* Camera View */
+.camera-view {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 400px;
+}
+
+.camera-video {
+  width: 100%;
+  height: 100%;
+  min-height: 400px;
+  object-fit: cover;
+  border-radius: 15px;
+  background: #000;
+}
+
+.camera-controls {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  z-index: 10;
+}
+
+.switch-camera-button {
+  padding: 0.75rem 1rem;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  border: none;
+  border-radius: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.switch-camera-button:hover {
+  background: rgba(0, 0, 0, 0.8);
+  transform: translateY(-1px);
+}
+
+.capture-button {
+  padding: 1rem 2rem;
+  background: var(--accent-color);
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1.1rem;
+  box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+}
+
+.capture-button:hover:not(:disabled) {
+  background: #ee5a24;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+}
+
+.capture-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Captured View */
+.captured-view {
+  padding: 2rem;
+  text-align: center;
+}
+
+.captured-image {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  border-radius: 15px;
+  box-shadow: 0 8px 32px var(--shadow-color);
+  border: 2px solid var(--border-color);
+  margin-bottom: 2rem;
+}
+
+.capture-controls {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.retake-button,
+.process-button,
+.download-button {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+
+.retake-button {
+  background: var(--button-bg);
+  color: white;
+}
+
+.retake-button:hover {
+  background: var(--button-hover);
+  transform: translateY(-1px);
+}
+
+.process-button {
+  background: var(--accent-color);
+  color: white;
+}
+
+.process-button:hover:not(:disabled) {
+  background: #ee5a24;
+  transform: translateY(-1px);
+}
+
+.process-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.download-button {
+  background: #28a745;
+  color: white;
+}
+
+.download-button:hover {
+  background: #218838;
+  transform: translateY(-1px);
+}
+
+/* Processing Result */
+.processing-result {
+  padding: 1.5rem;
+  border-radius: 15px;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.processing-result.success {
+  background: rgba(40, 167, 69, 0.1);
+  border: 2px solid #28a745;
+  color: #28a745;
+}
+
+.processing-result.error {
+  background: rgba(220, 53, 69, 0.1);
+  border: 2px solid #dc3545;
+  color: #dc3545;
+}
+
+.processing-result h4 {
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.expression-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.expression-details p {
+  margin: 0;
+  font-size: 1rem;
+}
+
+/* Camera Info */
+.camera-info {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: var(--card-bg);
+  border-radius: 15px;
+  border: 2px solid var(--border-color);
+}
+
+.camera-info h3 {
+  margin-bottom: 1rem;
+  color: var(--text-color);
+  font-size: 1.3rem;
+}
+
+.camera-info ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.camera-info li {
+  padding: 0.5rem 0;
+  color: var(--text-color);
+  opacity: 0.8;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.camera-info li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--accent-color);
+  font-weight: bold;
+}
+
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(4px);
+}
+
+.modal {
+  background: var(--card-bg);
+  border-radius: 20px;
+  padding: 2.5rem 2rem;
+  min-width: 320px;
+  max-width: 90vw;
+  color: var(--text-color);
+  text-align: center;
+  border: 2px solid var(--border-color);
+  box-shadow: 0 8px 32px var(--shadow-color);
+  animation: modalFadeIn 0.4s cubic-bezier(.4,0,.2,1);
+}
+
+@keyframes modalFadeIn {
+  from { 
+    opacity: 0; 
+    transform: translateY(-30px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+.modal h2 {
+  margin-bottom: 1rem;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-color);
+}
+
+.modal p {
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+  color: var(--text-color);
+  opacity: 0.8;
+}
+
+.modal-btn-group {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.modal-btn {
+  background: var(--accent-color);
+  color: white;
+  border: none;
+  border-radius: 18px;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+}
+
+.modal-btn:hover {
+  background: #ee5a24;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .smilecam {
+    padding: 1rem;
+  }
+
+  .camera-container {
+    min-height: 350px;
+  }
+
+  .camera-start,
+  .camera-error {
+    min-height: 350px;
+    padding: 2rem 1rem;
+  }
+
+  .camera-video {
+    min-height: 350px;
+  }
+
+  .camera-controls {
+    bottom: 1rem;
+    gap: 0.5rem;
+  }
+
+  .capture-controls {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .retake-button,
+  .process-button,
+  .download-button {
+    width: 100%;
+    max-width: 200px;
+  }
+
+  .modal {
+    margin: 1rem;
+    padding: 2rem 1.5rem;
+  }
+
+  .modal-btn-group {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .modal-btn {
+    width: 100%;
+    max-width: 250px;
+  }
+}
+
+@media (max-width: 480px) {
+  .camera-container {
+    min-height: 300px;
+  }
+
+  .camera-start,
+  .camera-error {
+    min-height: 300px;
+    padding: 1.5rem 1rem;
+  }
+
+  .camera-video {
+    min-height: 300px;
+  }
+
+  .camera-icon {
+    font-size: 3rem;
+  }
+
+  .camera-start h3 {
+    font-size: 1.3rem;
+  }
+
+  .capture-button {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+  }
+
+  .switch-camera-button {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.9rem;
+  }
+} 
