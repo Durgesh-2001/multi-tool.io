@@ -73,7 +73,7 @@ router.post('/youtube', authMiddleware, checkCredits, async (req, res) => {
     const outputPath = path.join(outputDir, outputFileName);
 
     // 1. Get the video title with a separate yt-dlp call
-    const ytDlpPath = process.platform === 'win32' ? 'yt-dlp.exe' : './yt-dlp';
+    const ytDlpPath = 'yt-dlp'; // Use global yt-dlp in Docker/Render
     let videoTitle = 'audio';
     try {
       videoTitle = await new Promise((resolve, reject) => {
@@ -101,7 +101,8 @@ router.post('/youtube', authMiddleware, checkCredits, async (req, res) => {
 
     ytDlpAudio.on('error', (err) => {
       console.error('yt-dlp error:', err);
-      return res.status(500).json({ error: 'yt-dlp process failed', details: err.message });
+      res.status(500).json({ error: 'yt-dlp process failed', details: err.message });
+      return;
     });
     ytDlpAudio.stderr.on('data', (data) => {
       // Suppress yt-dlp progress/info logs; only log if needed for debugging
@@ -110,7 +111,8 @@ router.post('/youtube', authMiddleware, checkCredits, async (req, res) => {
     });
     ytDlpAudio.on('close', (code) => {
       if (code !== 0) {
-        return res.status(500).json({ error: 'yt-dlp process exited with error', code });
+        res.status(500).json({ error: 'yt-dlp process exited with error', code });
+        return;
       }
     });
 
@@ -125,11 +127,13 @@ router.post('/youtube', authMiddleware, checkCredits, async (req, res) => {
           filename: `${videoTitle}.${format}`,
           format: format
         });
+        return;
       })
       .on('error', (err) => {
         // Only log actual errors
         console.error('FFmpeg error:', err);
-        return res.status(500).json({ error: 'Audio conversion failed', details: err.message });
+        res.status(500).json({ error: 'Audio conversion failed', details: err.message });
+        return;
       })
       .save(outputPath);
 
@@ -140,6 +144,7 @@ router.post('/youtube', authMiddleware, checkCredits, async (req, res) => {
       details: error.message,
       message: 'An unexpected error occurred while processing the YouTube video'
     });
+    return;
   }
 });
 
